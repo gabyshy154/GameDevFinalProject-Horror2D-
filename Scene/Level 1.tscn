@@ -785,7 +785,7 @@ position = Vector2(8, -130)
 zoom = Vector2(2, 2)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=533154952]
-color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+color = Color(0.072842635, 0.072842635, 0.072842635, 1)
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=931931941]
 position = Vector2(14, 120)
