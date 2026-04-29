@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://b7hor4wt5viqm"]
+
+[ext_resource type="Script" uid="uid://dadr8eruq4df7" path="res://Script/player.gd" id="1_3eeal"]
+[ext_resource type="Texture2D" uid="uid://bbnfmgxpqjfog" path="res://Art/Ninja Adventure - Asset Pack/Actor/CharacterAnimated/NinjaGreen/SpriteSheet.png" id="1_6l3be"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eeal"]
+atlas = ExtResource("1_6l3be")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvxg0"]
+atlas = ExtResource("1_6l3be")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mud5u"]
+atlas = ExtResource("1_6l3be")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvocf"]
+atlas = ExtResource("1_6l3be")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmp2f"]
+atlas = ExtResource("1_6l3be")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3pik8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eeal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvxg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mud5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvocf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmp2f")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_adgam"]
+radius = 6.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3eeal"]
+load_path = "res://.godot/imported/9578af169d1ecc60aa5774fac7ef193e.jpg-5c8dc3596541ea4d8a0ab863958e53a4.ctex"
+
+[node name="Player" type="CharacterBody2D" unique_id=987483671]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_3eeal")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=685134035]
+position = Vector2(0, -16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3pik8")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 3
+frame_progress = 0.3716396
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1329107274]
+position = Vector2(0, -13)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_adgam")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=194980950]
+position = Vector2(6, -10)
+scale = Vector2(3, 3)
+color = Color(0.43519226, 0.4351923, 0.43519217, 1)
+shadow_enabled = true
+texture = SubResource("CompressedTexture2D_3eeal")
