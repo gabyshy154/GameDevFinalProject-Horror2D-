@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b7hor4wt5viqm"]
+[gd_scene load_steps=10 format=3 uid="uid://b7hor4wt5viqm"]
 
 [ext_resource type="Script" uid="uid://dadr8eruq4df7" path="res://Script/player.gd" id="1_3eeal"]
 [ext_resource type="Texture2D" uid="uid://bf7ksg0363wjm" path="res://Art/png.png" id="2_3eeal"]
@@ -56,27 +56,27 @@ height = 16.0
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3eeal"]
 load_path = "res://.godot/imported/9578af169d1ecc60aa5774fac7ef193e.jpg-5c8dc3596541ea4d8a0ab863958e53a4.ctex"
 
-[node name="Player" type="CharacterBody2D" unique_id=987483671]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_3eeal")
 speed = 80
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=685134035]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3pik8")
 animation = &"Walking"
 autoplay = "Idle"
-frame_progress = 0.29904327
+frame_progress = 0.299043
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1329107274]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -12)
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_g1hv4")
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=194980950]
+[node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(3, 3)
-color = Color(0.43519226, 0.4351923, 0.43519217, 1)
+color = Color(0.435192, 0.435192, 0.435192, 1)
 shadow_enabled = true
 texture = SubResource("CompressedTexture2D_3eeal")
