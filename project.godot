@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Cast a light"
@@ -18,6 +22,9 @@ config/icon="res://icon.svg"
 [global_group]
 
 Player=""
+fear_meter=""
+battery=""
+flashlight=""
 
 [input]
 
