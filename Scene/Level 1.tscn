@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cp6upkcqrtfpc" path="res://icon.svg" id="4_qpib6"]
 [ext_resource type="PackedScene" uid="uid://c4pe0tx4a85if" path="res://Scene/health_bar.tscn" id="5_cb10o"]
 [ext_resource type="PackedScene" uid="uid://dhycaykptubca" path="res://Scene/progress_bar.tscn" id="6_io4e6"]
+[ext_resource type="PackedScene" path="res://Scene/enemy.tscn" id="7_io4e6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y41bd"]
 texture = ExtResource("1_ap7qg")
@@ -834,3 +835,6 @@ offset_bottom = 57.0
 theme_override_styles/background = SubResource("StyleBoxFlat_cb10o")
 theme_override_styles/fill = SubResource("StyleBoxFlat_io4e6")
 show_percentage = false
+
+[node name="Enemy" parent="." unique_id=2435230 instance=ExtResource("7_io4e6")]
+position = Vector2(7, 40)
