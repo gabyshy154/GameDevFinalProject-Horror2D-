@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://btd1kab4vhwlw"]
+[gd_scene load_steps=58 format=3 uid="uid://btd1kab4vhwlw"]
 
 [ext_resource type="Script" uid="uid://bsbwbup5n5gpl" path="res://Script/enemy.gd" id="1_hti8k"]
 [ext_resource type="Texture2D" uid="uid://dmgiwc5v83j2k" path="res://Art/Enemy_Animations_Set/enemies-vampire_attack.png" id="1_n6qjc"]
