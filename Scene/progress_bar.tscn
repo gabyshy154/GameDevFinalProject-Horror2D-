@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dhycaykptubca"]
+
+[ext_resource type="Script" uid="uid://ca18fgds4smsx" path="res://Script/battery.gd" id="1_aqk7b"]
+
+[node name="ProgressBar" type="ProgressBar" unique_id=1381658530]
+offset_right = 4.0
+offset_bottom = 27.0
+script = ExtResource("1_aqk7b")
+
+[node name="Timer" type="Timer" parent="." unique_id=1516594148]

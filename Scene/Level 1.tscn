@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b7hor4wt5viqm" path="res://Scene/Player.tscn" id="1_vdpco"]
 [ext_resource type="Texture2D" uid="uid://c1s32cusku6ta" path="res://Art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetHouse.png" id="2_qpib6"]
 [ext_resource type="Texture2D" uid="uid://cp6upkcqrtfpc" path="res://icon.svg" id="4_qpib6"]
+[ext_resource type="PackedScene" uid="uid://c4pe0tx4a85if" path="res://Scene/health_bar.tscn" id="5_cb10o"]
+[ext_resource type="PackedScene" uid="uid://dhycaykptubca" path="res://Scene/progress_bar.tscn" id="6_io4e6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y41bd"]
 texture = ExtResource("1_ap7qg")
@@ -771,6 +773,11 @@ polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_io4e6"]
 polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64, 59.6, 64, 63.9, 59, 64, -61.1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb10o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io4e6"]
+bg_color = Color(0.106431685, 0.74657714, 0, 1)
+
 [node name="Node2D" type="Node2D" unique_id=1711481643]
 position = Vector2(-246, 137)
 
@@ -810,3 +817,20 @@ texture = ExtResource("4_qpib6")
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="Icon3" unique_id=1996132743]
 occluder = SubResource("OccluderPolygon2D_io4e6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=521744298]
+
+[node name="HealthBar" parent="CanvasLayer" unique_id=1290975715 instance=ExtResource("5_cb10o")]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 418.0
+offset_bottom = 39.0
+
+[node name="ProgressBar" parent="CanvasLayer" unique_id=1381658530 groups=["battery"] instance=ExtResource("6_io4e6")]
+offset_left = 18.0
+offset_top = 45.0
+offset_right = 383.0
+offset_bottom = 57.0
+theme_override_styles/background = SubResource("StyleBoxFlat_cb10o")
+theme_override_styles/fill = SubResource("StyleBoxFlat_io4e6")
+show_percentage = false
