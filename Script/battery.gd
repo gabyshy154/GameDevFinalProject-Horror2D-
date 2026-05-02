@@ -1,7 +1,7 @@
 extends ProgressBar
 
 @export var drain_amount = 1
-@export var drain_interval = 5.0
+@export var drain_interval = 2.5
 @export var flicker_threshold = 20.0
 
 @onready var timer = $Timer

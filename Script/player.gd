@@ -21,7 +21,6 @@ func _physics_process(_delta):
 
 	if input_dir.x != 0:
 		$AnimatedSprite2D.flip_h = input_dir.x < 0
-
 	_animation(input_dir)
 
 func _animation(dir):
@@ -34,7 +33,7 @@ func _input(event):
 	if event.is_action_pressed("flashlight"):
 		var battery_bar = get_tree().get_first_node_in_group("battery")
 
-		if battery_bar == null:
+		if not battery_bar:
 			return
 
 		if not $PointLight2D.enabled and battery_bar.battery <= 0:
