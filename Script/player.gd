@@ -6,13 +6,9 @@ var fear_meter
 func _ready():
 	await get_tree().process_frame
 	fear_meter = get_tree().get_first_node_in_group("fear_meter")
-	$PointLight2D.enabled = false  # flashlight off at start
+	$PointLight2D.enabled = false
 
 func _physics_process(_delta):
-
-	if fear_meter and not $PointLight2D.enabled:
-		fear_meter.increase_amount = 5.0
-
 	if fear_meter and fear_meter.fear >= 100:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -25,10 +21,10 @@ func _physics_process(_delta):
 
 	if input_dir.x != 0:
 		$AnimatedSprite2D.flip_h = input_dir.x < 0
+
 	_animation(input_dir)
 
 func _animation(dir):
-	
 	if dir != Vector2.ZERO:
 		$AnimatedSprite2D.play("Walking")
 	else:
@@ -37,16 +33,16 @@ func _animation(dir):
 func _input(event):
 	if event.is_action_pressed("flashlight"):
 		var battery_bar = get_tree().get_first_node_in_group("battery")
-		
-		# dont turn on if battery empty
+
+		if battery_bar == null:
+			return
+
 		if not $PointLight2D.enabled and battery_bar.battery <= 0:
 			return
-			
+
 		$PointLight2D.enabled = !$PointLight2D.enabled
 
 		if $PointLight2D.enabled:
 			battery_bar.turn_on()
-			fear_meter.increase_amount = 1.0
 		else:
 			battery_bar.turn_off()
-			fear_meter.increase_amount = 5.0

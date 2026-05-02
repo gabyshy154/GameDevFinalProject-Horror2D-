@@ -382,7 +382,7 @@ animations = [{
 radius = 4.0
 height = 14.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["fear_meter"]]
 script = ExtResource("1_hti8k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
