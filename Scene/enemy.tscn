@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://btd1kab4vhwlw"]
+[gd_scene load_steps=59 format=3 uid="uid://btd1kab4vhwlw"]
 
 [ext_resource type="Script" uid="uid://bsbwbup5n5gpl" path="res://Script/enemy.gd" id="1_hti8k"]
 [ext_resource type="Texture2D" uid="uid://dmgiwc5v83j2k" path="res://Art/Enemy_Animations_Set/enemies-vampire_attack.png" id="1_n6qjc"]
@@ -382,6 +382,9 @@ animations = [{
 radius = 4.0
 height = 14.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hti8k"]
+radius = 100.0
+
 [node name="Enemy" type="CharacterBody2D" groups=["fear_meter"]]
 script = ExtResource("1_hti8k")
 
@@ -392,3 +395,9 @@ animation = &"Damage"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 6)
 shape = SubResource("CapsuleShape2D_vmi60")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-3, 6)
+shape = SubResource("CircleShape2D_hti8k")
