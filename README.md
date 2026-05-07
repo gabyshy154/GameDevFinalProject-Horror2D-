@@ -42,8 +42,8 @@ Explore → Collect Evidence → Avoid Enemy → Solve Puzzles → Progress
 
 ## Team Members and Roles
 - Janno Arradaza – Lead Programmer / Godot Specialist / Game Designer  
-- Humphrey Manango – Artist and Animator / UI Designer  
-- Neil Gabisay – Audio Designer / Tester / Level Designer  
+- Neil Gabisay – Artist and Animator / UI Designer / Level Designer
+- Humphrey Manango – Audio Designer / Tester / Game Developer  
 
 ---
 
