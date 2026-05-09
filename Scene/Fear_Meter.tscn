@@ -2,40 +2,18 @@
 
 [ext_resource type="Script" uid="uid://c71okfhw55n5d" path="res://Script/fear_meter.gd" id="1_5a2qa"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y2pxf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhjto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a2qa"]
 bg_color = Color(0.730232, 0, 0.211775, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ylvg"]
-expand_margin_left = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-shadow_color = Color(0.12549, 0.12549, 0.12549, 0.27451)
-shadow_offset = Vector2(0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twuq3"]
-bg_color = Color(1, 1, 1, 1)
-
 [node name="HealthBar" type="ProgressBar" unique_id=800537035 groups=["fear_meter"]]
 offset_right = 400.0
 offset_bottom = 27.0
-theme_override_styles/background = SubResource("StyleBoxEmpty_y2pxf")
+theme_override_styles/background = SubResource("StyleBoxFlat_rhjto")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5a2qa")
 show_percentage = false
 script = ExtResource("1_5a2qa")
-
-[node name="DamageBar" type="ProgressBar" parent="." unique_id=170244660]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_8ylvg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_twuq3")
-show_percentage = false
 
 [node name="Timer" type="Timer" parent="." unique_id=1359553870]
 wait_time = 0.4

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var patrol_speed = 50
-@export var chase_speed = 70
+@export var chase_speed = 50
 @export var lose_sight_radius = 300.0
 
 # Radius settings
@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var chase_radius = 250.0
 
 # Fear settings
-@export var fear_increase_when_chasing = 0.3
+@export var fear_increase_when_chasing = 0.03
 
 enum State { PATROL, CHASE, SEARCH }
 var state = State.PATROL

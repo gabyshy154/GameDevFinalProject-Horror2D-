@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dadr8eruq4df7" path="res://Script/player.gd" id="1_3eeal"]
 [ext_resource type="Texture2D" uid="uid://bf7ksg0363wjm" path="res://Art/png.png" id="2_3eeal"]
+[ext_resource type="PackedScene" uid="uid://cf66hdgoklr5s" path="res://Scene/text_box.tscn" id="3_jvxg0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jvxg0"]
 atlas = ExtResource("2_3eeal")
@@ -56,6 +57,9 @@ height = 16.0
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3eeal"]
 load_path = "res://.godot/imported/9578af169d1ecc60aa5774fac7ef193e.jpg-5c8dc3596541ea4d8a0ab863958e53a4.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvxg0"]
+size = Vector2(32, 32)
+
 [node name="Player" type="CharacterBody2D" unique_id=1204845502 groups=["Player"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_3eeal")
@@ -80,3 +84,13 @@ scale = Vector2(3, 3)
 color = Color(0.435192, 0.435192, 0.435192, 1)
 shadow_enabled = true
 texture = SubResource("CompressedTexture2D_3eeal")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=145656253]
+
+[node name="TextBox" parent="CanvasLayer" unique_id=179607529 instance=ExtResource("3_jvxg0")]
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=2121483234]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1966405612]
+position = Vector2(22, -12)
+shape = SubResource("RectangleShape2D_jvxg0")
