@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm1x7qgd85ecf"]
+
+[ext_resource type="Script" uid="uid://b3p2k4tep4cxj" path="res://Script/safe_zone.gd" id="1_c06mw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nxtgs"]
+radius = 120.934
+
+[node name="SafeZone" type="Area2D" groups=["timer"]]
+script = ExtResource("1_c06mw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nxtgs")
+
+[node name="Timer" type="Timer" parent="."]

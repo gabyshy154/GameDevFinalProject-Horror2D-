@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://c6afwaj7568l"]
+[gd_scene load_steps=18 format=4 uid="uid://c6afwaj7568l"]
 
 [ext_resource type="Texture2D" uid="uid://cjpe5046s3ifk" path="res://Art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png" id="1_ap7qg"]
 [ext_resource type="PackedScene" uid="uid://b7hor4wt5viqm" path="res://Scene/Player.tscn" id="1_vdpco"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhycaykptubca" path="res://Scene/Flashlight.tscn" id="6_io4e6"]
 [ext_resource type="PackedScene" uid="uid://btd1kab4vhwlw" path="res://Scene/enemy.tscn" id="7_io4e6"]
 [ext_resource type="PackedScene" uid="uid://dqqftfnt3hpsj" path="res://Scene/item.tscn" id="8_jt86j"]
+[ext_resource type="PackedScene" uid="uid://dm1x7qgd85ecf" path="res://Scene/safe_zone.tscn" id="9_72ot4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y41bd"]
 texture = ExtResource("1_ap7qg")
@@ -858,7 +859,7 @@ position = Vector2(25, -189)
 item_name = "Battery"
 item_type = "battery"
 
-[node name="Rusty_Key" parent="." instance=ExtResource("8_jt86j")]
+[node name="Rusty_Key" parent="." groups=["evidence"] instance=ExtResource("8_jt86j")]
 position = Vector2(-87, -176)
 item_name = "Rusty Key"
 item_type = "key"
@@ -867,3 +868,6 @@ item_type = "key"
 position = Vector2(66, -182)
 item_name = "Battery"
 item_type = "battery"
+
+[node name="SafeZone" parent="." instance=ExtResource("9_72ot4")]
+position = Vector2(-304, -151)

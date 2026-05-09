@@ -26,6 +26,8 @@ fear_meter=""
 battery=""
 flashlight=""
 evidence=""
+enemies=""
+timer=""
 
 [input]
 
