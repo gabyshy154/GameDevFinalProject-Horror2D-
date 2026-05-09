@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b7hor4wt5viqm"]
+[gd_scene load_steps=12 format=3 uid="uid://b7hor4wt5viqm"]
 
 [ext_resource type="Script" uid="uid://dadr8eruq4df7" path="res://Script/player.gd" id="1_3eeal"]
 [ext_resource type="Texture2D" uid="uid://bf7ksg0363wjm" path="res://Art/png.png" id="2_3eeal"]
@@ -60,12 +60,11 @@ load_path = "res://.godot/imported/9578af169d1ecc60aa5774fac7ef193e.jpg-5c8dc359
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvxg0"]
 size = Vector2(32, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=1204845502 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_3eeal")
-speed = 80
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=748686774]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3pik8")
@@ -73,24 +72,24 @@ animation = &"Walking"
 autoplay = "Idle"
 frame_progress = 0.299043
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=325031132]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -12)
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_g1hv4")
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1620475298 groups=["flashlight"]]
+[node name="PointLight2D" type="PointLight2D" parent="." groups=["flashlight"]]
 position = Vector2(0, -12)
 scale = Vector2(3, 3)
 color = Color(0.435192, 0.435192, 0.435192, 1)
 shadow_enabled = true
 texture = SubResource("CompressedTexture2D_3eeal")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=145656253]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextBox" parent="CanvasLayer" unique_id=179607529 instance=ExtResource("3_jvxg0")]
+[node name="TextBox" parent="CanvasLayer" instance=ExtResource("3_jvxg0")]
 
-[node name="InteractionArea" type="Area2D" parent="." unique_id=2121483234]
+[node name="InteractionArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1966405612]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(22, -12)
 shape = SubResource("RectangleShape2D_jvxg0")

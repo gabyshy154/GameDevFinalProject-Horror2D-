@@ -2,7 +2,7 @@ extends ProgressBar
 
 @onready var timer = $Timer
 @export var ambient_increase = 1.0
-@export var ambient_interval = 6.0
+@export var ambient_interval = 8.0
 var fear = 0.0 : set = _set_fear
 var target_fear = 0.0
 var fill_speed = 15.0
@@ -10,7 +10,7 @@ var fill_speed = 15.0
 var ambient_drip_active = false
 var ambient_drip_total = 0.0
 var ambient_drip_remaining = 0.0
-var ambient_drip_speed = 2.0 
+var ambient_drip_speed = 15.0 
 
 func _ready():
 	min_value = 0

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c4pe0tx4a85if"]
+[gd_scene load_steps=4 format=3 uid="uid://c4pe0tx4a85if"]
 
 [ext_resource type="Script" uid="uid://c71okfhw55n5d" path="res://Script/fear_meter.gd" id="1_5a2qa"]
 
@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a2qa"]
 bg_color = Color(0.730232, 0, 0.211775, 1)
 
-[node name="HealthBar" type="ProgressBar" unique_id=800537035 groups=["fear_meter"]]
+[node name="HealthBar" type="ProgressBar" groups=["fear_meter"]]
 offset_right = 400.0
 offset_bottom = 27.0
 theme_override_styles/background = SubResource("StyleBoxFlat_rhjto")
@@ -15,5 +15,5 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_5a2qa")
 show_percentage = false
 script = ExtResource("1_5a2qa")
 
-[node name="Timer" type="Timer" parent="." unique_id=1359553870]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 0.4

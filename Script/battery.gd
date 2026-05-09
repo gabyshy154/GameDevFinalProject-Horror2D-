@@ -35,20 +35,22 @@ func turn_off():
 	is_on = false
 	timer.stop()
 	if light_node:
-		light_node.enabled = false  # force light off
+		light_node.enabled = false
+
+func add_battery(percent: float):
+	var restore_amount = max_value * (percent / 100.0)
+	battery = min(max_value, battery + restore_amount)
+	print("Battery restored by ", percent, "% | Current battery: ", battery)
 
 func _on_timer_timeout():
 	battery -= drain_amount
-
 	if battery <= flicker_threshold and is_on:
-		# only flicker 20% of the time
 		if randf() < 0.2:
 			_flicker()
 
 func _flicker():
 	if not light_node:
 		return
-	# rapidly toggle light for flicker effect
 	light_node.enabled = false
 	await get_tree().create_timer(randf_range(0.05, 0.15)).timeout
 	if is_on and battery > 0:
