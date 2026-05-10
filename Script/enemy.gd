@@ -9,9 +9,9 @@ extends CharacterBody2D
 @export var chase_radius = 250.0
 
 # Fear settings
-@export var fear_increase_when_chasing = 20.03
+@export var fear_increase_when_chasing = 0.3
 
-enum State { PATROL, CHASE, SEARCH }
+enum State { PATROL, CHASE, SEARCH, RETURN }  # added RETURN
 var state = State.PATROL
 
 var player: Node2D = null
@@ -21,6 +21,7 @@ var search_timer: float = 0.0
 var search_duration: float = 3.0
 var fear_bar: Node = null
 var home_position: Vector2
+var player_in_safezone: bool = false
 
 # patrol wait
 var wait_timer: float = 0.0
@@ -34,13 +35,11 @@ func _ready():
 
 	_generate_patrol_points()
 
-	# connect Area2D signal for instant detection
 	var area = $DetectionArea
 	area.body_entered.connect(_on_detection_area_body_entered)
 	area.body_exited.connect(_on_detection_area_body_exited)
 
 func _generate_patrol_points():
-	# generate random points within patrol radius instead of just left and right
 	patrol_points.clear()
 	var num_points = randi_range(3, 6)
 	for i in num_points:
@@ -58,6 +57,8 @@ func _physics_process(delta):
 			_check_lost_player()
 		State.SEARCH:
 			_do_search(delta)
+		State.RETURN:
+			_do_return()  # new state
 
 	_handle_fear(delta)
 
@@ -66,7 +67,6 @@ func _do_patrol(delta):
 	if patrol_points.is_empty():
 		return
 
-	# wait at patrol point for a moment before moving
 	if is_waiting:
 		wait_timer += delta
 		velocity = Vector2.ZERO
@@ -89,14 +89,17 @@ func _do_patrol(delta):
 	$AnimatedSprite2D.play("Walking")
 
 	if global_position.distance_to(target) < 8.0:
-		# pause at each point for a random duration
 		is_waiting = true
 		wait_duration = randf_range(0.5, 2.0)
 
 # ── CHASE ────────────────────────────────────────────────
 func _do_chase():
 	if player == null:
-		state = State.PATROL
+		state = State.RETURN
+		return
+
+	if player_in_safezone:
+		state = State.RETURN  # go home if player enters safe zone
 		return
 
 	var direction = (player.global_position - global_position).normalized()
@@ -117,13 +120,29 @@ func _do_search(delta):
 	search_timer += delta
 	if search_timer >= search_duration:
 		search_timer = 0.0
-		_generate_patrol_points()  # generate fresh patrol path after searching
+		state = State.RETURN  # go home after searching instead of patrolling directly
+
+# ── RETURN HOME ──────────────────────────────────────────
+func _do_return():
+	var direction = (home_position - global_position).normalized()
+	velocity = direction * patrol_speed
+	move_and_slide()
+
+	if velocity.x != 0:
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+
+	$AnimatedSprite2D.play("Walking")
+
+	# once close enough to home generate fresh patrol and start patrolling
+	if global_position.distance_to(home_position) < 10.0:
+		_generate_patrol_points()
 		state = State.PATROL
 
 # ── DETECTION via Area2D ─────────────────────────────────
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("Player"):
-		state = State.CHASE
+		if not player_in_safezone:
+			state = State.CHASE
 
 func _on_detection_area_body_exited(body):
 	if body.is_in_group("Player"):
@@ -136,12 +155,15 @@ func _check_lost_player():
 
 	var dist_from_home = global_position.distance_to(home_position)
 	if dist_from_home > chase_radius:
-		state = State.SEARCH
+		state = State.RETURN  # return home if chased too far
 
 # ── FEAR ─────────────────────────────────────────────────
 func _handle_fear(delta):
 	if fear_bar == null or player == null:
 		return
 
-	if state == State.CHASE:
+	if state == State.CHASE and not player_in_safezone:
+		fear_bar.set_chasing(true)
 		fear_bar.add_fear(fear_increase_when_chasing * delta * 60)
+	else:
+		fear_bar.set_chasing(false)

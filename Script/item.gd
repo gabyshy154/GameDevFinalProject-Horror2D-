@@ -20,3 +20,4 @@ func pickup():
 #Click the instance
 #In the Inspector change item_name and item_type
 #Done — same scene, different behavior
+#BOOMBOCLART
