@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ctpmnx32xxikr"]
+
+[ext_resource type="Script" uid="uid://dkigu12723iwf" path="res://Scene/stamina_bar.gd" id="1_xq3fg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdqto"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq3fg"]
+bg_color = Color(0.93290037, 0.63735044, 0, 1)
+
+[node name="StaminaBar" type="ProgressBar" unique_id=1751883741 groups=["stamina_bar"]]
+offset_right = 17.0
+offset_bottom = 1.0
+theme_override_styles/background = SubResource("StyleBoxFlat_bdqto")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xq3fg")
+show_percentage = false
+script = ExtResource("1_xq3fg")
+
+[node name="Timer" type="Timer" parent="." unique_id=528098972]

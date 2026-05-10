@@ -16,6 +16,7 @@ var last_direction = Vector2.DOWN
 # inventory
 var evidence_count: int = 0
 var battery_count: int = 0
+var stamina_depleted = false
 
 func _ready():
 	await get_tree().process_frame
@@ -28,7 +29,6 @@ func _physics_process(delta):
 		move_and_slide()
 		$AnimatedSprite2D.play("Idle")
 		return
-
 	if fear_meter and fear_meter.value >= 100:
 		var battery_bar = get_tree().get_first_node_in_group("battery")
 		if $PointLight2D.enabled:
@@ -37,18 +37,14 @@ func _physics_process(delta):
 				battery_bar.turn_off()
 		_on_fear_full()
 		return
-
 	_handle_stamina(delta)
-
 	var input_dir = Input.get_vector("left", "right", "up", "down")
-
-	if Input.is_action_pressed("sprint") and stamina > 0 and input_dir != Vector2.ZERO:
+	if Input.is_action_pressed("sprint") and stamina > 0 and input_dir != Vector2.ZERO and not stamina_depleted:
 		is_sprinting = true
 		velocity = input_dir * sprint_speed
 	else:
 		is_sprinting = false
 		velocity = input_dir * speed
-
 	move_and_slide()
 
 	if input_dir.x != 0:
@@ -73,12 +69,20 @@ func _update_interaction_area():
 	$InteractionArea/CollisionShape2D.position = offset
 
 func _handle_stamina(delta):
-	if is_sprinting and stamina > 0:
+	if is_sprinting and stamina > 0 and not stamina_depleted:
 		stamina -= stamina_drain * delta
 		stamina = max(0, stamina)
+		if stamina <= 0:
+			stamina_depleted = true
 	else:
 		stamina += stamina_regen * delta
 		stamina = min(stamina_max, stamina)
+		if stamina >= stamina_max:
+			stamina_depleted = false
+
+	var stamina_bar = get_tree().get_first_node_in_group("stamina_bar")
+	if stamina_bar:
+		stamina_bar.update_stamina(stamina)
 
 func _animation(dir):
 	if dir != Vector2.ZERO:
