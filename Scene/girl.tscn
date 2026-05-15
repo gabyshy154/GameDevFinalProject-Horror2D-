@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://clgwe3kwi62b2"]
+
+[ext_resource type="Texture2D" uid="uid://bks55jevxyhob" path="res://Art/Sidepiece/Idle.png" id="1_p6hjo"]
+[ext_resource type="Script" uid="uid://cdnle3x8grw5b" path="res://Script/npc_girl.gd" id="1_rgtju"]
+[ext_resource type="Texture2D" uid="uid://dd7dqpttguj6o" path="res://Art/Sidepiece/Walking_Right.png" id="2_rgtju"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5snp"]
+atlas = ExtResource("1_p6hjo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdodq"]
+atlas = ExtResource("2_rgtju")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvr5y"]
+atlas = ExtResource("2_rgtju")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gslr8"]
+atlas = ExtResource("2_rgtju")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dpt1"]
+atlas = ExtResource("2_rgtju")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv054"]
+atlas = ExtResource("2_rgtju")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w35ng"]
+atlas = ExtResource("2_rgtju")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3t30"]
+atlas = ExtResource("2_rgtju")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea8nk"]
+atlas = ExtResource("2_rgtju")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6tiyb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5snp")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdodq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvr5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gslr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dpt1")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv054")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w35ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3t30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea8nk")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p6hjo"]
+radius = 4.0
+height = 14.0
+
+[node name="Girl" type="CharacterBody2D" groups=["soma"]]
+script = ExtResource("1_rgtju")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6tiyb")
+animation = &"Walking"
+frame = 1
+frame_progress = 0.16904
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1)
+shape = SubResource("CapsuleShape2D_p6hjo")

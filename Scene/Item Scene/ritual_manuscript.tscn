@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmc3aar6lrjxg"]
+
+[ext_resource type="Texture2D" uid="uid://c4fox10m13htf" path="res://Art/Items/ritual01.png" id="1_hw848"]
+[ext_resource type="Script" uid="uid://dhkhcs40yh3mh" path="res://Script/item.gd" id="2_u3qyr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3qyr"]
+size = Vector2(4, 4)
+
+[node name="ritual_manuscirpt" type="Area2D" groups=["evidence"]]
+script = ExtResource("2_u3qyr")
+item_name = "Ritual Manuscript"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.203125, 0.1875)
+texture = ExtResource("1_hw848")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.96046e-08, 0)
+shape = SubResource("RectangleShape2D_u3qyr")

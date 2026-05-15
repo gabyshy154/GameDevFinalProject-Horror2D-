@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhycaykptubca"]
+[gd_scene load_steps=6 format=3 uid="uid://dhycaykptubca"]
 
 [ext_resource type="Script" uid="uid://ca18fgds4smsx" path="res://Script/battery.gd" id="1_aqk7b"]
+[ext_resource type="AudioStream" uid="uid://r6yvl1gfqyrm" path="res://SFX/Flashlight/Audio_Die.wav" id="2_wuc3n"]
+[ext_resource type="AudioStream" uid="uid://bgvfnakxxbq2m" path="res://SFX/Flashlight/Audio_LowBattery.wav" id="3_xgiss"]
+[ext_resource type="AudioStream" uid="uid://u5e80cnki63q" path="res://SFX/Flashlight/Audio_Shake.wav" id="4_qrba0"]
+[ext_resource type="AudioStream" uid="uid://c43yfcdjgxt5r" path="res://SFX/Flashlight/Audio_OnOff.wav" id="5_xgiss"]
 
 [node name="Flashlight" type="ProgressBar" groups=["battery"]]
 offset_right = 4.0
@@ -8,3 +12,15 @@ offset_bottom = 27.0
 script = ExtResource("1_aqk7b")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Audio_Die" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_wuc3n")
+
+[node name="Audio_LowBattery" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xgiss")
+
+[node name="Audio_Shake" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qrba0")
+
+[node name="Audio_OnOff" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xgiss")

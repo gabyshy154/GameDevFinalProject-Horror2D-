@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://4ncd25udqvhi"]
+
+[ext_resource type="Texture2D" uid="uid://8bgbdkygq4j4" path="res://Art/Items/bloody_letter.png" id="1_plkoh"]
+[ext_resource type="Script" uid="uid://dhkhcs40yh3mh" path="res://Script/item.gd" id="1_yt2hk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yt2hk"]
+size = Vector2(3.0625, 4.125)
+
+[node name="bloodied_letter" type="Area2D" groups=["evidence"]]
+script = ExtResource("1_yt2hk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.210938, 0.203125)
+texture = ExtResource("1_plkoh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yt2hk")

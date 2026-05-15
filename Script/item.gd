@@ -5,7 +5,9 @@ extends Area2D
 
 func _ready():
 	# automatically join the correct group based on item_type
-	add_to_group(item_type)  
+	add_to_group(item_type)
+	if item_type == "flashlight":
+		add_to_group("flashlight_item") 
 
 func pickup():
 	queue_free()
