@@ -208,6 +208,7 @@
 [ext_resource type="PackedScene" uid="uid://b7hor4wt5viqm" path="res://Scene/Player.tscn" id="206_8afr7"]
 [ext_resource type="Script" uid="uid://cf6fisuittgu6" path="res://tunnel.gd" id="207_hm0bk"]
 [ext_resource type="PackedScene" uid="uid://bqmahrmcywakc" path="res://Scene/Item Scene/flashlight.tscn" id="208_nk50d"]
+[ext_resource type="PackedScene" uid="uid://dm1x7qgd85ecf" path="res://Scene/safe_zone.tscn" id="209_1mn0x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8afr7"]
 texture = ExtResource("1_nnje5")
@@ -148232,5 +148233,8 @@ color = Color(0.16924527, 0.1692453, 0.16924527, 1)
 
 [node name="flashlight" parent="." unique_id=111410988 instance=ExtResource("208_nk50d")]
 position = Vector2(71, 332)
+
+[node name="SafeZone" parent="." unique_id=402466280 instance=ExtResource("209_1mn0x")]
+position = Vector2(57, 343)
 
 [connection signal="area_shape_entered" from="Area2D" to="Player" method="_on_area_2d_area_shape_entered"]

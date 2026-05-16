@@ -205,6 +205,7 @@
 [ext_resource type="Texture2D" uid="uid://b1nqcm4ylni0b" path="res://assets/tileset/car.png" id="199_hd584"]
 [ext_resource type="PackedScene" uid="uid://b7hor4wt5viqm" path="res://Scene/Player.tscn" id="202_c3tvv"]
 [ext_resource type="Script" uid="uid://dicsji8n574yq" path="res://Script/Tunnel_First-Tunnel.gd" id="205_o5bn3"]
+[ext_resource type="PackedScene" uid="uid://dm1x7qgd85ecf" path="res://Scene/safe_zone.tscn" id="206_qgkkq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmqwm"]
 texture = ExtResource("1_fd4ia")
@@ -145924,5 +145925,8 @@ script = ExtResource("205_o5bn3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=529436396]
 position = Vector2(1471.75, 340.5)
 shape = SubResource("RectangleShape2D_qgkkq")
+
+[node name="SafeZone" parent="." unique_id=76484090 instance=ExtResource("206_qgkkq")]
+position = Vector2(236, 352)
 
 [connection signal="body_entered" from="Area2D" to="flashlight" method="_on_area_2d_body_entered"]
