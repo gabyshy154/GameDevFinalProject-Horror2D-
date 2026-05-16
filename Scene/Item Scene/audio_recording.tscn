@@ -9,6 +9,7 @@ size = Vector2(4.46776, 1.64865)
 [node name="audio_recording" type="Area2D" groups=["evidence"]]
 script = ExtResource("2_yb4w0")
 item_name = "Audio Recording"
+evidence_audio = "Recorder"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-9.53674e-07, 0)

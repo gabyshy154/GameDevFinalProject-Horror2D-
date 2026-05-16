@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b7hor4wt5viqm"]
+[gd_scene load_steps=42 format=3 uid="uid://b7hor4wt5viqm"]
 
 [ext_resource type="Script" uid="uid://dadr8eruq4df7" path="res://Script/player.gd" id="1_3eeal"]
 [ext_resource type="Texture2D" uid="uid://lxqksgebkf5q" path="res://Art/MC/idle right.png" id="2_mud5u"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cf66hdgoklr5s" path="res://Scene/text_box.tscn" id="3_jvxg0"]
 [ext_resource type="Texture2D" uid="uid://b765fbs05h3dm" path="res://Art/MC/right with lights off.png" id="4_fvocf"]
 [ext_resource type="Texture2D" uid="uid://rt78vp7g8wwd" path="res://Art/MC/right with lights on.png" id="5_pmp2f"]
+[ext_resource type="AudioStream" uid="uid://c43yfcdjgxt5r" path="res://SFX/Flashlight/Audio_OnOff.wav" id="7_liw1m"]
+[ext_resource type="AudioStream" uid="uid://r6yvl1gfqyrm" path="res://SFX/Flashlight/Audio_Die.wav" id="8_jriwm"]
+[ext_resource type="AudioStream" uid="uid://u5e80cnki63q" path="res://SFX/Flashlight/Audio_Shake.wav" id="9_7dww1"]
+[ext_resource type="AudioStream" uid="uid://dwrmuvjgl1qw3" path="res://SFX/Flashlight/Audio_LowBattery.wav" id="10_inyuv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmp2f"]
 atlas = ExtResource("2_mud5u")
@@ -288,3 +292,18 @@ texture = SubResource("CompressedTexture2D_3eeal")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(22, -12)
 shape = SubResource("RectangleShape2D_jvxg0")
+
+[node name="Audio_OnOff" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_liw1m")
+
+[node name="Audio_Die" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_jriwm")
+
+[node name="Audio_Shake" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_7dww1")
+
+[node name="Audio_LowBattery" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_inyuv")
+volume_db = 24.0
+
+[node name="Audio_Evidence" type="AudioStreamPlayer2D" parent="."]

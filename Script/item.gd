@@ -1,13 +1,13 @@
 extends Area2D
 
 @export var item_name: String = "Item"
-@export var item_type: String = "evidence"  # evidence or battery
+@export var item_type: String = "evidence"
+@export var evidence_audio: String = ""  # audio name to play on pickup
 
 func _ready():
-	# automatically join the correct group based on item_type
 	add_to_group(item_type)
 	if item_type == "flashlight":
-		add_to_group("flashlight_item") 
+		add_to_group("flashlight_item")
 
 func pickup():
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c6afwaj7568l"]
+[gd_scene load_steps=29 format=4 uid="uid://c6afwaj7568l"]
 
 [ext_resource type="Texture2D" uid="uid://cjpe5046s3ifk" path="res://Art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png" id="1_ap7qg"]
 [ext_resource type="PackedScene" uid="uid://b7hor4wt5viqm" path="res://Scene/Player.tscn" id="1_vdpco"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b070ghrfo1dqk" path="res://Scene/Item Scene/villager_diary.tscn" id="15_vx0fo"]
 [ext_resource type="PackedScene" uid="uid://brlmkx7kenw4r" path="res://Scene/Item Scene/military_report.tscn" id="16_dof7r"]
 [ext_resource type="PackedScene" uid="uid://cmc3aar6lrjxg" path="res://Scene/Item Scene/ritual_manuscript.tscn" id="17_w3nqb"]
+[ext_resource type="PackedScene" uid="uid://dw2gaf47834m6" path="res://Scene/Pause_Menu.tscn" id="18_ujxsf"]
 [ext_resource type="PackedScene" uid="uid://c7exjvp3tv02q" path="res://Scene/Item Scene/audio_recording.tscn" id="18_ywaow"]
 [ext_resource type="PackedScene" uid="uid://deq37t2ncjaju" path="res://Scene/Item Scene/map.tscn" id="19_ujxsf"]
 [ext_resource type="PackedScene" uid="uid://dy0tf8ytpv734" path="res://Scene/Item Scene/final_confession.tscn" id="20_pekgp"]
@@ -793,6 +794,8 @@ bg_color = Color(0.106432, 0.746577, 0, 1)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-246, 137)
+
+[node name="Pause_Menu" parent="." instance=ExtResource("18_ujxsf")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.641922, 0.887393)

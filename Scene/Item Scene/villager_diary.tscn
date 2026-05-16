@@ -8,6 +8,7 @@ size = Vector2(2.82843, 3.35876)
 
 [node name="villager_diary" type="Area2D"]
 script = ExtResource("1_8xsc7")
+evidence_audio = "Diary"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.375, -1)
@@ -17,5 +18,4 @@ texture = ExtResource("1_nojuf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["evidence"]]
 position = Vector2(1.1875, -1.1875)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_yt2hk")

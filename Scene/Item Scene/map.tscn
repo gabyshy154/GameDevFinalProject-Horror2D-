@@ -9,6 +9,7 @@ size = Vector2(3, 3.5)
 [node name="ritual_manuscript" type="Area2D" groups=["evidence"]]
 script = ExtResource("2_u5as2")
 item_name = "Map"
+evidence_audio = "Map"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 0.25)

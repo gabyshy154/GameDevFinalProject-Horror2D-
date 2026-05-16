@@ -9,6 +9,7 @@ size = Vector2(3.86894, 2.57051)
 [node name="military_report" type="Area2D" groups=["evidence"]]
 script = ExtResource("2_g5oco")
 item_name = "Military Report"
+evidence_audio = "Military_Report"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.15625, 0.105469)

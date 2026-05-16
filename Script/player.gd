@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed = 100
-@export var sprint_speed = 180
+@export var speed = 70
+@export var sprint_speed = 150
 @export var stamina_max = 100.0
 @export var stamina_drain = 20.0
 @export var stamina_regen = 10.0
@@ -137,6 +137,7 @@ func _input(event):
 		if flicker_active:
 			return
 		$PointLight2D.enabled = !$PointLight2D.enabled
+		$Audio_OnOff.play()  # play on/off sound every toggle
 		if $PointLight2D.enabled:
 			battery_bar.turn_on()
 		else:
@@ -173,6 +174,7 @@ func _pickup_battery(item):
 		battery_bar.add_battery(20.0)
 	battery_count += 1
 	print("Battery picked up! Total: ", battery_count)
+	$Audio_Shake.play() # play shake sound when battery is added
 	show_message("Found a battery!")
 	item.pickup()
 
@@ -180,7 +182,25 @@ func _pickup_evidence(item):
 	evidence_count += 1
 	print("Evidence picked up! Total: ", evidence_count)
 	_increase_difficulty()
-	show_message("Found evidence! (" + str(evidence_count) + ")")
+
+	# play the specific evidence audio if it exists
+	if item.evidence_audio != "":
+		var audio_node = get_node_or_null("Audio_Evidence")
+		if audio_node:
+			# load and play the correct audio file
+			var audio_path = "res://SFX/Evidence/" + item.evidence_audio + ".wav"
+			var stream = load(audio_path)
+			print("Stream loaded: ", stream)             # check if file was found
+			if stream:
+				audio_node.stop()          # stop any currently playing audio first
+				audio_node.stream = stream
+				audio_node.volume_db = 0   # make sure volume is not muted
+				audio_node.play()
+				print("Playing: ", audio_path)
+			else:
+				print("ERROR: Could not load: ", audio_path)  # check if field is set
+
+	show_message("Found evidence! " + item.item_name + " (" + str(evidence_count) + ")")
 	item.pickup()
 
 func _increase_difficulty():
@@ -224,3 +244,10 @@ func add_to_nearby_items(_item):
 
 func remove_from_nearby_items(_item):
 	pass
+
+func on_attacked():
+	set_physics_process(true)  # re-enable so await works
+	set_process_input(false)
+	get_node("AnimatedSprite2D").play("Idle")
+	await get_tree().create_timer(1.5).timeout
+	SavePoint.respawn()

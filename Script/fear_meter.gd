@@ -1,8 +1,8 @@
 extends ProgressBar
 
 @onready var timer = $Timer
-@export var ambient_increase = 1.0
-@export var ambient_interval = 1.0
+@export var ambient_increase = 0.5
+@export var ambient_interval = 5.0
 var fear = 0.0 : set = _set_fear
 var target_fear = 0.0
 var fill_speed = 15.0

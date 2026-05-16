@@ -8,6 +8,7 @@ size = Vector2(3.0625, 4.125)
 
 [node name="bloodied_letter" type="Area2D" groups=["evidence"]]
 script = ExtResource("1_yt2hk")
+evidence_audio = "Bloody_Letter"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4.76837e-07)
