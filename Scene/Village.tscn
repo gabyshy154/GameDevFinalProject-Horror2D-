@@ -14838,5 +14838,5 @@ position = Vector2(2469, -312)
 texture = SubResource("AtlasTexture_lddov")
 
 [node name="Sprite2D96" type="Sprite2D" parent="." unique_id=1279305200]
-position = Vector2(2554, 306)
+position = Vector2(2554, 299)
 texture = SubResource("AtlasTexture_lddov")

@@ -61,6 +61,7 @@ load_path = "res://.godot/imported/9578af169d1ecc60aa5774fac7ef193e.jpg-5c8dc359
 size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D" unique_id=1545766404 groups=["Player"]]
+position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_3eeal")
 
