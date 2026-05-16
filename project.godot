@@ -16,8 +16,17 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Cast a light"
 run/main_scene="uid://c6afwaj7568l"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SavePoint="*res://Script/SavePoint.gd"
+
+[display]
+
+window/size/viewport_width=1550
+window/size/viewport_height=550
 
 [global_group]
 
@@ -29,6 +38,7 @@ evidence=""
 enemies=""
 timer=""
 stamina_bar=""
+soma=""
 
 [input]
 
@@ -76,3 +86,5 @@ sprint={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

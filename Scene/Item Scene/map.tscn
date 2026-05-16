@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://deq37t2ncjaju"]
+
+[ext_resource type="Texture2D" uid="uid://w64nj7n56eiq" path="res://Art/Items/map.png" id="1_4yxxe"]
+[ext_resource type="Script" uid="uid://dhkhcs40yh3mh" path="res://Script/item.gd" id="2_u5as2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3qyr"]
+size = Vector2(3, 3.5)
+
+[node name="ritual_manuscript" type="Area2D" groups=["evidence"]]
+script = ExtResource("2_u5as2")
+item_name = "Map"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 0.25)
+scale = Vector2(0.125, 0.140625)
+texture = ExtResource("1_4yxxe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_u3qyr")

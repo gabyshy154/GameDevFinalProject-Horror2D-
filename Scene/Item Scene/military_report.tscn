@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://brlmkx7kenw4r"]
+
+[ext_resource type="Texture2D" uid="uid://u5nbnd757sdf" path="res://Art/Items/military_doc.png" id="1_yisyu"]
+[ext_resource type="Script" uid="uid://dhkhcs40yh3mh" path="res://Script/item.gd" id="2_g5oco"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fx8b0"]
+size = Vector2(3.86894, 2.57051)
+
+[node name="military_report" type="Area2D" groups=["evidence"]]
+script = ExtResource("2_g5oco")
+item_name = "Military Report"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15625, 0.105469)
+texture = ExtResource("1_yisyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.72529e-08)
+rotation = 0.558505
+shape = SubResource("RectangleShape2D_fx8b0")

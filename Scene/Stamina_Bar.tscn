@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://ctpmnx32xxikr"]
+[gd_scene load_steps=0 format=3 uid="uid://ctpmnx32xxikr"]
 
-[ext_resource type="Script" uid="uid://dkigu12723iwf" path="res://Scene/stamina_bar.gd" id="1_xq3fg"]
+[ext_resource type="Script" uid="uid://dkigu12723iwf" path="res://Script/stamina_bar.gd" id="1_xq3fg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdqto"]
 

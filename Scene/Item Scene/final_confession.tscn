@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy0tf8ytpv734"]
+
+[ext_resource type="Texture2D" uid="uid://cj0sxuf5iygjn" path="res://Art/Items/final_confession.png" id="1_wmir3"]
+[ext_resource type="Script" uid="uid://dhkhcs40yh3mh" path="res://Script/item.gd" id="2_7r3a8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7r3a8"]
+radius = 0.707107
+height = 5.65685
+
+[node name="final_confession" type="Area2D" groups=["evidence"]]
+position = Vector2(-1, 1)
+script = ExtResource("2_7r3a8")
+item_name = "Final Confession"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.999999, -0.25)
+scale = Vector2(0.1875, 0.171875)
+texture = ExtResource("1_wmir3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.999999, -0.5)
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_7r3a8")
