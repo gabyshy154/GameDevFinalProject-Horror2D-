@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://clgwe3kwi62b2"]
+[gd_scene format=3 uid="uid://8no33xq0gdrt"]
 
 [ext_resource type="Texture2D" uid="uid://bks55jevxyhob" path="res://Art/Sidepiece/Idle.png" id="1_p6hjo"]
-[ext_resource type="Script" uid="uid://cdnle3x8grw5b" path="res://Script/npc_girl.gd" id="1_rgtju"]
+[ext_resource type="Script" path="res://Script/npc_girl.gd" id="1_rgtju"]
 [ext_resource type="Texture2D" uid="uid://dd7dqpttguj6o" path="res://Art/Sidepiece/Walking_Right.png" id="2_rgtju"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5snp"]
@@ -89,15 +89,15 @@ animations = [{
 radius = 4.0
 height = 14.0
 
-[node name="Girl" type="CharacterBody2D" groups=["soma"]]
+[node name="Girl" type="CharacterBody2D" unique_id=1072557969 groups=["soma"]]
 script = ExtResource("1_rgtju")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1851636755]
 sprite_frames = SubResource("SpriteFrames_6tiyb")
 animation = &"Walking"
 frame = 1
 frame_progress = 0.16904
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1853471337]
 position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_p6hjo")

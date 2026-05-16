@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bhfg7up3d7mih"]
+[gd_scene format=4 uid="uid://b5xhmpc17yhec"]
 
 [ext_resource type="Texture2D" uid="uid://cakce4dipwjnk" path="res://assets/tileset/background_layer_1.png" id="1_nnje5"]
 [ext_resource type="Texture2D" uid="uid://duc40xr1nhytj" path="res://assets/tileset/Bricks_06-512x512.png" id="2_8afr7"]
@@ -205,6 +205,8 @@
 [ext_resource type="Texture2D" uid="uid://ddbs07vql5b5a" path="res://assets/tileset/Path_Tile.png" id="203_nsk5o"]
 [ext_resource type="Texture2D" uid="uid://bfcaejks11tq7" path="res://assets/tileset/Props.png" id="204_0011w"]
 [ext_resource type="Texture2D" uid="uid://gtyl0wo8wm0w" path="res://assets/tileset/Resources.png" id="205_7oym0"]
+[ext_resource type="PackedScene" uid="uid://b7hor4wt5viqm" path="res://Scene/Player.tscn" id="206_8afr7"]
+[ext_resource type="Script" uid="uid://cf6fisuittgu6" path="res://tunnel.gd" id="207_hm0bk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8afr7"]
 texture = ExtResource("1_nnje5")
@@ -148098,6 +148100,9 @@ region = Rect2(180.89218, 252.10886, 94.45834, 30.446106)
 atlas = ExtResource("41_006q6")
 region = Rect2(6.3898354, 252.31342, 95.44017, 30.726288)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk50d"]
+size = Vector2(122.5, 150)
+
 [node name="Node2D" type="Node2D" unique_id=1118769150]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1771737490]
@@ -148209,3 +148214,19 @@ texture = SubResource("AtlasTexture_eqxhn")
 position = Vector2(248.83334, 326)
 scale = Vector2(0.13333334, 0.13333334)
 texture = SubResource("AtlasTexture_g7yvd")
+
+[node name="Player" parent="." unique_id=1545766404 instance=ExtResource("206_8afr7")]
+position = Vector2(34, 350)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1171992627]
+position = Vector2(702, 0)
+script = ExtResource("207_hm0bk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1125505910]
+position = Vector2(1471.75, 343)
+shape = SubResource("RectangleShape2D_nk50d")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=406225466]
+color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+
+[connection signal="area_shape_entered" from="Area2D" to="Player" method="_on_area_2d_area_shape_entered"]

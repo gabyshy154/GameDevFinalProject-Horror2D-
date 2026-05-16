@@ -1,11 +1,9 @@
 [gd_scene format=4 uid="uid://b4qxlftoqf5sg"]
 
 [ext_resource type="Texture2D" uid="uid://cakce4dipwjnk" path="res://assets/tileset/background_layer_1.png" id="1_fd4ia"]
+[ext_resource type="PackedScene" uid="uid://bqmahrmcywakc" path="res://Scene/Item Scene/flashlight.tscn" id="2_diyw8"]
 [ext_resource type="Texture2D" uid="uid://duc40xr1nhytj" path="res://assets/tileset/Bricks_06-512x512.png" id="2_mk3af"]
-[ext_resource type="PackedScene" uid="uid://c4pe0tx4a85if" path="res://Scene/Fear_Meter.tscn" id="2_qgkkq"]
-[ext_resource type="PackedScene" uid="uid://dhycaykptubca" path="res://Scene/Flashlight.tscn" id="3_cmqwm"]
 [ext_resource type="Texture2D" uid="uid://bufvxqa8733ds" path="res://assets/tileset/rock_3.png" id="3_d8duj"]
-[ext_resource type="PackedScene" uid="uid://ctpmnx32xxikr" path="res://Scene/Stamina_Bar.tscn" id="4_dudfk"]
 [ext_resource type="Texture2D" uid="uid://bnjypwcivnvqw" path="res://assets/tileset/Roofs.png" id="4_hxd3s"]
 [ext_resource type="Texture2D" uid="uid://5lsh5jywsr3j" path="res://assets/tileset/Roofs_01-512x512.png" id="5_micpp"]
 [ext_resource type="Texture2D" uid="uid://lkuiyvmjkusq" path="res://assets/tileset/Roofs_02-512x512.png" id="6_rwnw7"]
@@ -206,11 +204,7 @@
 [ext_resource type="Texture2D" uid="uid://c2auocw66fd7h" path="res://assets/tileset/rock_2.png" id="191_kpm28"]
 [ext_resource type="Texture2D" uid="uid://b1nqcm4ylni0b" path="res://assets/tileset/car.png" id="199_hd584"]
 [ext_resource type="PackedScene" uid="uid://b7hor4wt5viqm" path="res://Scene/Player.tscn" id="202_c3tvv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0kqh"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wc38w"]
-bg_color = Color(0.106432, 0.746577, 0, 1)
+[ext_resource type="Script" uid="uid://dicsji8n574yq" path="res://Script/Tunnel_First-Tunnel.gd" id="205_o5bn3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmqwm"]
 texture = ExtResource("1_fd4ia")
@@ -145566,38 +145560,21 @@ region = Rect2(96.577225, 297.30505, 64.85623, 51.30417)
 atlas = ExtResource("116_c3tvv")
 region = Rect2(5.1324997, 393.03464, 95.87056, 35.268433)
 
-[node name="Node2D" type="Node2D" unique_id=1503136425]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgkkq"]
+size = Vector2(122.5, 111)
+
+[node name="Node2D2" type="Node2D" unique_id=1503136425]
 position = Vector2(-1, -1)
+
+[node name="flashlight" parent="." unique_id=816116472 instance=ExtResource("2_diyw8")]
+z_index = 1
+position = Vector2(233, 342)
+scale = Vector2(0.5, 0.5)
+item_name = "Flashlight"
 
 [node name="Player" parent="." unique_id=1545766404 instance=ExtResource("202_c3tvv")]
 z_index = 1
-position = Vector2(321, 346)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1235538075]
-zoom = Vector2(2, 2)
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="Player" unique_id=95726984]
-
-[node name="HealthBar" parent="Player/CanvasLayer2" unique_id=388208455 instance=ExtResource("2_qgkkq")]
-offset_left = 18.0
-offset_top = 18.0
-offset_right = 418.0
-offset_bottom = 39.0
-
-[node name="ProgressBar" parent="Player/CanvasLayer2" unique_id=1651786542 instance=ExtResource("3_cmqwm")]
-offset_left = 18.0
-offset_top = 63.0
-offset_right = 250.0
-offset_bottom = 75.0
-theme_override_styles/background = SubResource("StyleBoxFlat_c0kqh")
-theme_override_styles/fill = SubResource("StyleBoxFlat_wc38w")
-show_percentage = false
-
-[node name="StaminaBar" parent="Player/CanvasLayer2" unique_id=1751883741 instance=ExtResource("4_dudfk")]
-offset_left = 18.0
-offset_top = 43.0
-offset_right = 381.0
-offset_bottom = 59.0
+position = Vector2(312, 350)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=906177567]
 position = Vector2(-62, -16)
@@ -145610,6 +145587,7 @@ scale = Vector2(0.29485294, 0.29485294)
 texture = ExtResource("199_hd584")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="car" unique_id=300067826]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="car/StaticBody2D" unique_id=1981670554]
 position = Vector2(28.82788, 22.0448)
@@ -145939,3 +145917,12 @@ texture = SubResource("AtlasTexture_nb2s1")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1893391002]
 color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1344087244]
+script = ExtResource("205_o5bn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=529436396]
+position = Vector2(1471.75, 340.5)
+shape = SubResource("RectangleShape2D_qgkkq")
+
+[connection signal="body_entered" from="Area2D" to="flashlight" method="_on_area_2d_body_entered"]
