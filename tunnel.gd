@@ -7,4 +7,8 @@ func _ready():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		get_tree().change_scene_to_file(target_scene)
+		SavePoint.save_inventory(body)
+		SavePoint.respawn_position = body.global_position
+		SavePoint.current_scene = target_scene
+		SavePoint.has_save = true
+		get_tree().call_deferred("change_scene_to_file", target_scene)

@@ -25,8 +25,13 @@ func _ready():
 	await get_tree().process_frame
 	fear_meter = get_tree().get_first_node_in_group("fear_meter")
 	$PointLight2D.enabled = false
+
 	if SavePoint.has_save:
 		global_position = SavePoint.respawn_position
+		# restore inventory from SavePoint
+		has_flashlight = SavePoint.has_flashlight
+		evidence_count = SavePoint.evidence_count
+		battery_count = SavePoint.battery_count
 
 func _physics_process(delta):
 	if is_dialogue_open:
@@ -88,7 +93,6 @@ func _handle_stamina(delta):
 	else:
 		stamina += stamina_regen * delta
 		stamina = min(stamina_max, stamina)
-		# only need to reach threshold to sprint again, not fully full
 		if stamina >= stamina_recover_threshold:
 			stamina_depleted = false
 
@@ -163,6 +167,7 @@ func _input(event):
 
 func _pickup_flashlight(item):
 	has_flashlight = true
+	SavePoint.has_flashlight = true  # save to autoload immediately
 	show_message("Found a flashlight!")
 	print("Flashlight picked up!")
 	item.pickup()
@@ -172,12 +177,14 @@ func _pickup_battery(item):
 	if battery_bar:
 		battery_bar.add_battery(20.0)
 	battery_count += 1
+	SavePoint.battery_count = battery_count  # save to autoload immediately
 	print("Battery picked up! Total: ", battery_count)
 	show_message("Found a battery!")
 	item.pickup()
 
 func _pickup_evidence(item):
 	evidence_count += 1
+	SavePoint.evidence_count = evidence_count  # save to autoload immediately
 	print("Evidence picked up! Total: ", evidence_count)
 	_increase_difficulty()
 	show_message("Found evidence! (" + str(evidence_count) + ")")
